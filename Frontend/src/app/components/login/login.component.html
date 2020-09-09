@@ -1,0 +1,21 @@
+<body class="text-center">
+    <form class="form-login">
+        <h1 class="mb-3">Login</h1>
+        <div>
+            <input (click)="toggleFunc('admin')" type="radio" name="usertype" value="Admin">&nbsp;
+            <label>Admin</label>&nbsp;
+            <input (click)="toggleFunc('user')" type="radio" name="usertype" value="User">&nbsp;
+            <label>User</label>
+        </div>
+        <label for="inputUserName" class="sr-only">User Name</label>
+        <input type="text" id="inputUserName" class="form-control" placeholder="Enter Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="mb-3">
+            <a routerLink="/signup">New User? Register Here</a>
+        </div>
+        <button *ngIf="userTypeAdmin && !userTypeUser" routerLink="/adminDashboard" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button *ngIf="userTypeUser && !userTypeAdmin" routerLink="/userDashboard" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+    </form>
+</body>

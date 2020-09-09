@@ -1,0 +1,63 @@
+<div class="card">
+    <div class="card-header text-center">
+        <h2>Edit Company</h2>
+    </div>
+    <div class="card-body">
+        <form #editCompanyForm="ngForm" (ngSubmit)="onSubmit(editCompanyForm)">
+            <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" [(ngModel)]="company.companyName" #newCompanyName="ngModel"
+                [ngClass]="{'is-invalid':newCompanyName.errors && newCompanyName.touched}" 
+                required class="form-control" name="companyName">
+                <div [hidden]="!newCompanyName.errors?.required" class="invalid-feedback">
+                    Company Name required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Stock Exchanges</label>
+                <input type="text" [(ngModel)]="company.stockExchangeName" #newStockExchange="ngModel"
+                [ngClass]="{'is-invalid':newStockExchange.errors && newStockExchange.touched}" 
+                required class="form-control" name="stockExchangeName">
+                <div [hidden]="!newStockExchange.errors?.required" class="invalid-feedback">
+                    Required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Sector</label>
+                <input type="text" [(ngModel)]="company.sector" #newSector="ngModel"
+                [ngClass]="{'is-invalid':newSector.errors && newSector.touched}" 
+                required class="form-control" name="sector">
+                <div [hidden]="!newSector.errors?.required" class="invalid-feedback">
+                    Sector name required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Brief</label>
+                <input type="text" [(ngModel)]="company.brief"
+                class="form-control" name="brief">
+            </div>
+            <div class="form-group">
+                <label>Turnover</label>
+                <input type="text" [(ngModel)]="company.turnover"
+                class="form-control" name="turnover">
+            </div>
+            <div class="form-group">
+                <label>Board of directors</label>
+                <input type="text" [(ngModel)]="company.boardOfDirectors"
+                class="form-control" name="boardOfDirectors">
+            </div>
+            <div class="form-group">
+                <label>CEO</label>
+                <input type="text" [(ngModel)]="company.ceo"
+                class="form-control" name="ceo">
+            </div>
+            <div class="form-group">
+                <label>Stock Code</label>
+                <input type="text" [(ngModel)]="company.stockCode"
+                class="form-control" name="stockCode">
+            </div>
+            <input value="Submit"
+            [disabled]="!editCompanyForm.valid" type="submit" class="btn btn-lg btn-success btn-block">
+        </form>
+    </div>
+</div>

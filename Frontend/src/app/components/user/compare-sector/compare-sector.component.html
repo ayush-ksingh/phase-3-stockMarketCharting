@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-4 col-sm-4">
+        <div class="card">
+            <div class="card-header text-center">
+                Compare companies in a sector
+            </div>
+            <div class="card-body">
+                <form #sort2Sector="ngForm" (ngSubmit)="onSubmit(sort2Sector)">
+                    <div class="form-group">
+                        <label>First Sector Name</label>
+                        <input type="text" [(ngModel)]="compare.sectorName1" #newSectorName1="ngModel"
+                            [ngClass]="{'is-invalid':newSectorName1.errors && newSectorName1.touched}" required
+                            class="form-control" name="sectorName1">
+                        <div [hidden]="!newSectorName1.errors?.required" class="invalid-feedback">
+                            Sector Name required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Second Sector Name</label>
+                        <input type="text" [(ngModel)]="compare.sectorName2" #newSectorName2="ngModel"
+                            [ngClass]="{'is-invalid':newSectorName2.errors && newSectorName2.touched}" required
+                            class="form-control" name="sectorName2">
+                        <div [hidden]="!newSectorName2.errors?.required" class="invalid-feedback">
+                            Sector Name required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Period from: </label>
+                        <input type="date" [(ngModel)]="compare.from" class="form-control" name="from">
+                    </div>
+                    <div class="form-group">
+                        <label>Period till: </label>
+                        <input type="date" [(ngModel)]="compare.to" class="form-control" name="to">
+                    </div>
+                    <input value="Submit"
+                    [disabled]="!sort2Sector.valid" type="submit" class="btn btn-lg btn-success btn-block">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="output?.length>0" class="col-md-8 col-sm-8">
+        <div class="card">
+            <div class="card-header text-center">
+                Search Result
+            </div>
+            <div class="card-body">
+                <div *ngFor="let out of output" class="row mb-3">
+                    <div class="col-md-2 col-sm-2 justify-content-center">
+                        <h6 class="h6">{{out.sectorName}}</h6>
+                    </div>
+                    <div class="col-md-2 col-sm-2 justify-content-center">
+                        <h6 class="h6 font-weight-normal">{{out.companyName}}</h6>
+                    </div>
+                    <div class="col-md-2 col-sm-2 justify-content-center">
+                        <h6 class="h6 font-weight-normal">{{out.averageStockPrice}}</h6>
+                    </div>
+                    <div class="col-md-3 col-sm-3 justify-content-center">
+                        <h6 class="h6 font-weight-normal">{{out.from}}</h6>
+                    </div>
+                    <div class="col-md-3 col-sm-3 justify-content-center">
+                        <h6 class="h6 font-weight-normal">{{out.to}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

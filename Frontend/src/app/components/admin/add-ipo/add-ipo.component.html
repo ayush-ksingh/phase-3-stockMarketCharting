@@ -1,0 +1,60 @@
+<div class="card">
+    <div class="card-header text-center">
+        <h2>Edit IPO</h2>
+    </div>
+    <div class="card-body">
+        <form #updateIpoForm="ngForm" (ngSubmit)="onSubmit(updateIpoForm)">
+            <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" [(ngModel)]="ipo.companyName" #newCompanyName="ngModel"
+                [ngClass]="{'is-invalid':newCompanyName.errors && newCompanyName.touched}" 
+                required class="form-control" name="companyName">
+                <div [hidden]="!newCompanyName.errors?.required" class="invalid-feedback">
+                    Company Name required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Stock Exchange</label>
+                <input type="text" [(ngModel)]="ipo.exchangeName" #newStockExchange="ngModel"
+                [ngClass]="{'is-invalid':newStockExchange.errors && newStockExchange.touched}" 
+                required class="form-control" name="exchangeName">
+                <div [hidden]="!newStockExchange.errors?.required" class="invalid-feedback">
+                    Required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Price Per Share</label>
+                <input type="text" [(ngModel)]="ipo.pricePerShare" #newPricePerShare="ngModel"
+                [ngClass]="{'is-invalid':newPricePerShare.errors && newPricePerShare.touched}" 
+                required class="form-control" name="pricePerShare">
+                <div [hidden]="!newPricePerShare.errors?.required" class="invalid-feedback">
+                    Required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Total number of Shares</label>
+                <input type="text" [(ngModel)]="ipo.numberOfShares" #newNumberOfShares="ngModel"
+                [ngClass]="{'is-invalid':newNumberOfShares.errors && newNumberOfShares.touched}" 
+                required class="form-control" name="numberOfShares">
+                <div [hidden]="!newNumberOfShares.errors?.required" class="invalid-feedback">
+                    Required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Open Date time</label>
+                <input type="text" [(ngModel)]="ipo.openDateTime" #newOpenDateTime="ngModel"
+                [ngClass]="{'is-invalid':newOpenDateTime.errors && newOpenDateTime.touched}" 
+                required class="form-control" name="openDateTime">
+                <div [hidden]="!newOpenDateTime.errors?.required" class="invalid-feedback">
+                    Required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Remarks</label>
+                <input type="text" [(ngModel)]="ipo.remarks"
+                class="form-control" name="remarks">
+            </div>
+            <button [disabled]="!updateIpoForm.valid" type="submit" class="btn btn-lg btn-success btn-block">Submit</button>
+        </form>
+    </div>
+</div>

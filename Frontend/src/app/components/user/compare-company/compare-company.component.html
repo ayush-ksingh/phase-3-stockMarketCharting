@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        <div class="card">
+            <div class="card-header text-center">
+                Company Stock Price
+            </div>
+            <div class="card-body">
+                <form #sortCompanyForm="ngForm" (ngSubmit)="onSubmit(sortCompanyForm)">
+                    <div class="form-group">
+                        <label>First Company Name</label>
+                        <input type="text" [(ngModel)]="compare.companyName1" #newCompanyName1="ngModel"
+                            [ngClass]="{'is-invalid':newCompanyName1.errors && newCompanyName1.touched}" required
+                            class="form-control" name="companyName1">
+                        <div [hidden]="!newCompanyName1.errors?.required" class="invalid-feedback">
+                            Company Name required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Related Stock Exchange Name</label>
+                        <input type="text" [(ngModel)]="compare.stockExchangeName1" #newExchangeName1="ngModel"
+                            [ngClass]="{'is-invalid':newExchangeName1.errors && newExchangeName1.touched}" required
+                            class="form-control" name="stockExchangeName1">
+                        <div [hidden]="!newCompanyName1.errors?.required" class="invalid-feedback">
+                            Exchange Name required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Second Company Name</label>
+                        <input type="text" [(ngModel)]="compare.companyName2" #newCompanyName2="ngModel"
+                            [ngClass]="{'is-invalid':newCompanyName2.errors && newCompanyName2.touched}" required
+                            class="form-control" name="companyName2">
+                        <div [hidden]="!newCompanyName2.errors?.required" class="invalid-feedback">
+                            Company Name required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Related Stock Exchange Name</label>
+                        <input type="text" [(ngModel)]="compare.stockExchangeName2" #newExchangeName2="ngModel"
+                            [ngClass]="{'is-invalid':newExchangeName2.errors && newExchangeName2.touched}" required
+                            class="form-control" name="stockExchangeName2">
+                        <div [hidden]="!newCompanyName2.errors?.required" class="invalid-feedback">
+                            Exchange Name required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Period from: </label>
+                        <input type="date" [(ngModel)]="compare.from" class="form-control" name="from">
+                    </div>
+                    <div class="form-group">
+                        <label>Period till: </label>
+                        <input type="date" [(ngModel)]="compare.to" class="form-control" name="to">
+                    </div>
+                    <input value="Submit"
+                    [disabled]="!sortCompanyForm.valid" type="submit" class="btn btn-lg btn-success btn-block">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="stockPrices?.length>0" class="col-md-6 col-sm-6">
+        <div class="card">
+            <div class="card-header text-center">
+                Search Result
+            </div>
+            <div class="card-body">
+                <div *ngFor="let stockPrice of stockPrices" class="row mb-3">
+                    <div class="col-md-2 col-sm-2 justify-content-center">
+                        <h6 class="h6">{{stockPrice.companyCode}}</h6>
+                    </div>
+                    <div class="col-md-2 col-sm-2 justify-content-center">
+                        <h6 class="h6 font-weight-normal">{{stockPrice.exchangeName}}</h6>
+                    </div>
+                    <div class="col-md-2 col-sm-2 justify-content-center">
+                        <h6 class="h6 font-weight-normal">{{stockPrice.currentPrice}}</h6>
+                    </div>
+                    <div class="col-md-3 col-sm-3 justify-content-center">
+                        <h6 class="h6 font-weight-normal">{{stockPrice.date}}</h6>
+                    </div>
+                    <div class="col-md-3 col-sm-3 justify-content-center">
+                        <h6 class="h6 font-weight-normal">{{stockPrice.time}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
