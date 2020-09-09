@@ -1,0 +1,2 @@
+insert into company(company_id,company_name,turnover,ceo,board_of_directors,stock_exchange_name,sector,brief,stock_code)
+values(1,'State Bank of India','1234','A','A,B','BSE','Banking','Nil','500112');
